@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- ============== SEO METADATOS ESENCIALES ============== -->
+    <!-- ============== METADATOS ESENCIALES PARA SEO ============== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kit de Herramientas de Contenido con IA | Generador SEO y Optimizador de Imágenes</title>
-    <meta name="description" content="Potencia tu marketing digital con nuestro kit de herramientas de IA. Genera textos SEO, hashtags, CTA, prueba títulos para alto CTR y optimiza imágenes para web con un solo clic.">
-    <meta name="keywords" content="generador seo, optimización de imágenes, herramientas de marketing, inteligencia artificial, hashtags, CTA, alto CTR, marketing de contenidos, hitster ai, repurpose content, reutilizar contenido, webp, texto alternativo">
+    <title>Herramientas de Imagen: Creador de Íconos y Optimizador WebP</title>
+    <meta name="description" content="Crea favicons para tu web a partir de tu logo, explora nuestra biblioteca de íconos SVG y optimiza tus imágenes convirtiéndolas al formato WebP. Herramientas de imagen todo en uno.">
+    <meta name="keywords" content="generador de favicon, creador de iconos, biblioteca de iconos, iconos svg, optimizador de imágenes, convertir a webp, comprimir imágenes, descargar iconos, herramienta web, hitster ai">
     <meta name="author" content="Hitster Ai">
     
     <!-- ============== ETIQUETAS OPEN GRAPH (PARA REDES SOCIALES) ============== -->
-    <meta property="og:title" content="Kit de Herramientas de Contenido con IA | Generador SEO y Optimizador">
-    <meta property="og:description" content="Genera textos, hashtags y CTA optimizados para SEO. Reutiliza contenido y optimiza imágenes para web al instante con el poder de la IA.">
+    <meta property="og:title" content="Herramientas de Imagen | Creador de Íconos y Optimizador WebP">
+    <meta property="og:description" content="Sube tu logo para crear favicons, descarga íconos SVG personalizables y optimiza tus imágenes a WebP para mejorar la velocidad de tu sitio.">
     <meta property="og:type" content="website">
     <!-- IMPORTANTE: Reemplaza la URL de abajo con la URL final de tu sitio en GitHub Pages -->
     <meta property="og:url" content="https://TU_USUARIO_DE_GITHUB.github.io/TU_REPOSITORIO/">
-    <meta property="og:image" content="https://placehold.co/1200x630/4f46e5/ffffff?text=Kit+de+Contenido+IA">
-    <meta property="og:image:alt" content="Una imagen mostrando el logo y el título del Kit de Herramientas de Contenido con IA">
+    <meta property="og:image" content="https://placehold.co/1200x630/6d28d9/ffffff?text=Herramientas+de+Imagen">
+    <meta property="og:image:alt" content="Una imagen mostrando el título de las Herramientas de Imagen">
 
     <!-- ============== ETIQUETAS TWITTER CARD ============== -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Kit de Herramientas de Contenido con IA | Generador SEO y Optimizador">
-    <meta name="twitter:description" content="Genera textos, hashtags y CTA optimizados para SEO. Reutiliza contenido y optimiza imágenes para web al instante con el poder de la IA.">
+    <meta name="twitter:title" content="Herramientas de Imagen | Creador de Íconos y Optimizador WebP">
+    <meta name="twitter:description" content="Sube tu logo para crear favicons, descarga íconos SVG personalizables y optimiza tus imágenes a WebP.">
     <!-- IMPORTANTE: Reemplaza la URL de la imagen si tienes una propia -->
-    <meta name="twitter:image" content="https://placehold.co/1200x630/4f46e5/ffffff?text=Kit+de+Contenido+IA">
+    <meta name="twitter:image" content="https://placehold.co/1200x630/6d28d9/ffffff?text=Herramientas+de+Imagen">
 
     <!-- ============== URL CANÓNICA ============== -->
     <!-- IMPORTANTE: Reemplaza la URL de abajo con la URL final de tu sitio en GitHub Pages -->
@@ -44,141 +44,115 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         input[type="file"]::file-selector-button { @apply bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg cursor-pointer hover:bg-indigo-700 transition-all-ease; }
         .dark input[type="file"]::file-selector-button { @apply bg-indigo-500 hover:bg-indigo-600; }
-        .output-card { @apply bg-gray-100 dark:bg-gray-700 p-4 rounded-lg; }
+        .icon-gallery-item { @apply p-4 bg-gray-100 dark:bg-gray-800 rounded-lg cursor-pointer border-2 border-transparent hover:border-indigo-500 transition-all-ease; }
+        .icon-gallery-item.selected { @apply border-indigo-600 bg-indigo-100 dark:bg-indigo-900; }
     </style>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-all-ease flex flex-col min-h-screen">
 
     <div class="flex-grow container mx-auto p-4 md:p-8 max-w-5xl">
         <header class="text-center mb-8">
-            <h1 class="text-4xl md:text-5xl font-bold text-indigo-600 dark:text-indigo-400">Kit de Herramientas de Contenido con IA</h1>
-            <p class="mt-2 text-lg text-gray-600 dark:text-gray-400">Genera, reutiliza y optimiza tu contenido con el poder de la IA.</p>
+            <h1 class="text-4xl md:text-5xl font-bold text-indigo-600 dark:text-indigo-400">Herramientas de Imagen</h1>
+            <p class="mt-2 text-lg text-gray-600 dark:text-gray-400">Crea y optimiza imágenes para tus proyectos web.</p>
         </header>
 
         <!-- Tabs for navigation -->
         <div class="mb-8 flex flex-col sm:flex-row justify-center bg-gray-200 dark:bg-gray-800 rounded-lg p-1 max-w-sm sm:max-w-lg mx-auto">
-            <button id="tab-seo" class="tab flex-1 py-2 px-4 rounded-md font-semibold transition-all-ease tab-active">Generador SEO</button>
-            <button id="tab-repurpose" class="tab flex-1 py-2 px-4 rounded-md font-semibold transition-all-ease">Reutilizar Contenido</button>
-            <button id="tab-image" class="tab flex-1 py-2 px-4 rounded-md font-semibold transition-all-ease">Optimizador de Imagen</button>
+            <button id="tab-optimizer" class="tab flex-1 py-2 px-4 rounded-md font-semibold transition-all-ease tab-active">Optimizador de Imágenes</button>
+            <button id="tab-icon-creator" class="tab flex-1 py-2 px-4 rounded-md font-semibold transition-all-ease">Creador de Íconos</button>
         </div>
-
-        <!-- SEO Generator Section -->
-        <main id="seo-section" class="space-y-6">
+        
+        <!-- Image Optimizer Section -->
+        <main id="optimizer-section" class="space-y-6">
             <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                <h2 class="text-2xl font-bold mb-4 text-center">1. Generador de Contenido para Redes Sociales</h2>
-                <div class="flex flex-col items-center gap-8">
-                    <!-- Inputs -->
-                    <div class="space-y-4 w-full max-w-lg">
-                        <div>
-                            <label for="topic" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Describe el tema de tu publicación:</label>
-                            <textarea id="topic" rows="4" class="mt-1 block w-full rounded-md bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="Ej: Lanzamiento de un nuevo curso online sobre marketing digital..."></textarea>
-                        </div>
-                        <div>
-                            <label for="platform" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Elige la Red Social:</label>
-                            <select id="platform" class="mt-1 block w-full rounded-md bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                                <option>Instagram</option>
-                                <option>Facebook</option>
-                                <option>YouTube (título y descripción)</option>
-                                <option>TikTok (descripción)</option>
-                                <option>X (antes Twitter)</option>
-                                <option>LinkedIn</option>
-                            </select>
-                        </div>
-                        <div class="space-y-2">
-                             <button id="generate-seo-btn" class="w-full bg-indigo-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition-all-ease">
-                                ✨ Generar Contenido Completo
-                            </button>
-                            <button id="generate-ab-btn" class="w-full bg-purple-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 dark:bg-purple-500 dark:hover:bg-purple-600 transition-all-ease">
-                                ✨ Probar Títulos (A/B Test)
-                            </button>
-                        </div>
+                <div class="flex flex-col items-center gap-6">
+                    <div class="w-full max-w-lg">
+                        <label for="image-upload" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">1. Sube una imagen para optimizarla:</label>
+                        <input id="image-upload" type="file" accept="image/png, image/jpeg, image/gif" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 dark:file:bg-indigo-900 file:text-indigo-700 dark:file:text-indigo-300 hover:file:bg-indigo-100 dark:hover:file:bg-indigo-800"/>
                     </div>
-                    <!-- Outputs Column -->
-                    <div class="relative min-h-[300px] w-full max-w-lg">
-                        <div id="seo-loader" class="hidden absolute inset-0 justify-center items-center bg-white/50 dark:bg-gray-800/50 rounded-lg z-10"><div class="loader"></div></div>
-                        <div id="seo-output" class="space-y-4 hidden">
-                            <div>
-                                <h3 class="font-semibold text-lg flex justify-between items-center">Título Atractivo <button class="copy-btn" data-target="attractive-title">📋</button></h3>
-                                <div id="attractive-title" class="mt-1 p-3 rounded-md bg-gray-100 dark:bg-gray-700 min-h-[50px]"></div>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-lg flex justify-between items-center">Descripción con CTA <button class="copy-btn" data-target="description-text">📋</button></h3>
-                                <div id="description-text" class="mt-1 p-3 rounded-md bg-gray-100 dark:bg-gray-700 whitespace-pre-wrap min-h-[100px]"></div>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-lg flex justify-between items-center">Hashtags <button class="copy-btn" data-target="hashtags">📋</button></h3>
-                                <div id="hashtags" class="mt-1 p-3 rounded-md bg-gray-100 dark:bg-gray-700"></div>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-lg flex justify-between items-center">Palabras Clave (Keywords) <button class="copy-btn" data-target="keywords">📋</button></h3>
-                                <div id="keywords" class="mt-1 p-3 rounded-md bg-gray-100 dark:bg-gray-700"></div>
-                            </div>
+                    <div id="optimizer-loader" class="hidden justify-center items-center mt-6 w-full"><div class="loader"></div><p class="ml-4">Optimizando imagen...</p></div>
+                    <div id="optimizer-output" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 w-full max-w-4xl">
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">Original</h3>
+                            <img id="original-image" src="" alt="Imagen Original" class="rounded-lg shadow-md w-full" onerror="this.style.display='none'">
+                            <p id="original-size" class="text-sm mt-2 text-center"></p>
                         </div>
-                        <div id="ab-test-output" class="space-y-4 hidden">
-                             <h3 class="font-semibold text-lg">Sugerencias de Títulos para Prueba A/B</h3>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">Optimizada (WebP)</h3>
+                            <img id="optimized-image" src="" alt="Imagen Optimizada" class="rounded-lg shadow-md w-full" onerror="this.style.display='none'">
+                            <p id="optimized-size" class="text-sm mt-2 text-center font-bold"></p>
+                        </div>
+                        <div class="md:col-span-2 mt-4 space-y-4">
+                            <div>
+                                <label for="alt-text-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300">2. Escribe un texto alternativo (opcional):</label>
+                                <input type="text" id="alt-text-input" class="mt-1 block w-full rounded-md bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="Ej: Gato siamés sentado en un sofá rojo">
+                            </div>
+                            <a id="download-btn" href="#" download="optimized_image.webp" class="w-full block text-center bg-green-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:bg-green-500 dark:hover:bg-green-600 transition-all-ease">
+                                ⬇️ Descargar Imagen Optimizada
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
         
-        <!-- Repurpose Content Section -->
-        <main id="repurpose-section" class="hidden space-y-6">
+        <!-- Icon Creator Section -->
+        <main id="icon-creator-section" class="hidden space-y-6">
+            <!-- Favicon Generator -->
             <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                <h2 class="text-2xl font-bold mb-4 text-center">2. Reutilizador de Contenido Mágico</h2>
-                <div class="flex flex-col items-center gap-8">
-                     <!-- Inputs -->
-                    <div class="space-y-4 w-full max-w-lg">
-                         <div>
-                            <label for="long-text" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Pega tu artículo, transcripción o texto largo aquí:</label>
-                            <textarea id="long-text" rows="8" class="mt-1 block w-full rounded-md bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="Pega el contenido que quieres transformar..."></textarea>
-                        </div>
-                        <button id="repurpose-btn" class="w-full bg-teal-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 dark:bg-teal-500 dark:hover:bg-teal-600 transition-all-ease">
-                            ✨ ¡Reutilizar Mágicamente!
-                        </button>
+                <h2 class="text-2xl font-bold mb-4 text-center">Convierte tu Imagen en un Ícono Web (Favicon)</h2>
+                <div class="flex flex-col items-center gap-6">
+                    <div class="w-full max-w-lg">
+                        <label for="favicon-upload" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">1. Sube tu logo o imagen (se recomienda cuadrada):</label>
+                        <input id="favicon-upload" type="file" accept="image/png, image/jpeg" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-purple-50 dark:file:bg-purple-900 file:text-purple-700 dark:file:text-purple-300 hover:file:bg-purple-100 dark:hover:file:bg-purple-800"/>
                     </div>
-                     <!-- Outputs Column -->
-                    <div class="relative w-full max-w-2xl">
-                        <div id="repurpose-loader" class="hidden absolute inset-0 justify-center items-center bg-white/50 dark:bg-gray-800/50 rounded-lg z-10"><div class="loader"></div></div>
-                        <div id="repurpose-output" class="hidden space-y-6">
-                            <!-- Content will be injected by JS -->
+                    <div id="favicon-output" class="hidden w-full max-w-4xl space-y-6">
+                        <div>
+                           <h3 class="font-semibold text-lg mb-2">2. Descarga tus Íconos</h3>
+                           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                               <!-- Favicon previews will be injected here -->
+                           </div>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">3. Copia este código en el &lt;head&gt; de tu web</h3>
+                            <pre class="bg-gray-100 dark:bg-gray-900 text-sm p-4 rounded-lg overflow-x-auto"><code id="favicon-html-code"></code></pre>
                         </div>
                     </div>
                 </div>
             </div>
-        </main>
 
-
-        <!-- Image Optimizer Section -->
-        <main id="image-section" class="hidden space-y-6">
+            <!-- SVG Icon Library -->
             <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                <h2 class="text-2xl font-bold mb-4 text-center">3. Optimizador de Imágenes para Web</h2>
-                <div class="flex flex-col items-center gap-6">
-                    <div class="w-full max-w-lg">
-                        <label for="image-upload" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Sube una imagen para optimizarla:</label>
-                        <input id="image-upload" type="file" accept="image/png, image/jpeg, image/gif" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 dark:file:bg-indigo-900 file:text-indigo-700 dark:file:text-indigo-300 hover:file:bg-indigo-100 dark:hover:file:bg-indigo-800"/>
+                <h2 class="text-2xl font-bold mb-4 text-center border-t pt-6 mt-6 border-gray-200 dark:border-gray-700">O Explora Nuestra Biblioteca de Íconos SVG</h2>
+                 <div class="flex flex-col lg:flex-row items-start gap-8">
+                    <!-- Icon Gallery -->
+                    <div class="w-full lg:w-2/3">
+                        <h3 class="font-semibold text-lg mb-4">1. Selecciona un Ícono</h3>
+                        <div id="icon-gallery" class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4">
+                           <!-- Icons will be injected by JS -->
+                        </div>
                     </div>
-                    <div id="image-loader" class="hidden justify-center items-center mt-6 w-full"><div class="loader"></div><p class="ml-4">Analizando y optimizando...</p></div>
-                    <div id="image-output" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 w-full max-w-4xl">
-                        <div>
-                            <h3 class="font-semibold text-lg mb-2">Original</h3>
-                            <img id="original-image" src="" alt="Imagen Original" class="rounded-lg shadow-md w-full">
-                            <p id="original-size" class="text-sm mt-2 text-center"></p>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-lg mb-2">Optimizada (WebP)</h3>
-                            <img id="optimized-image" src="" alt="Imagen Optimizada" class="rounded-lg shadow-md w-full">
-                            <p id="optimized-size" class="text-sm mt-2 text-center font-bold"></p>
-                        </div>
-                        <div class="md:col-span-2 mt-4 space-y-4">
-                            <div>
-                                <label for="alt-text" class="block text-sm font-medium text-gray-700 dark:text-gray-300 flex justify-between items-center">Texto Alternativo (Alt Text) por IA <button class="copy-btn" data-target="alt-text-input">📋</button></label>
-                                <input type="text" id="alt-text-input" class="mt-1 block w-full rounded-md bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    <!-- Customization and Download -->
+                    <div class="w-full lg:w-1/3 sticky top-8">
+                        <h3 class="font-semibold text-lg mb-4">2. Personaliza y Descarga</h3>
+                        <div id="icon-customizer" class="hidden flex-col items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                            <div id="icon-preview" class="p-4 bg-gray-200 dark:bg-gray-700 rounded-lg w-40 h-40 flex items-center justify-center">
+                                <!-- Selected icon preview will be injected by JS -->
                             </div>
-                            <a id="download-btn" href="#" download="optimized_image.webp" class="w-full block text-center bg-green-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:bg-green-500 dark:hover:bg-green-600 transition-all-ease">
-                                ⬇️ Descargar Imagen Optimizada
-                            </a>
+                            <div class="w-full">
+                                <label for="icon-color-picker" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Cambiar color:</label>
+                                <input type="color" id="icon-color-picker" value="#4f46e5" class="mt-1 w-full h-10 rounded-md border-gray-300">
+                            </div>
+                             <div class="w-full space-y-2">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Descargar como PNG:</label>
+                                <div class="flex justify-between gap-2">
+                                     <button data-size="64" class="download-png-btn flex-1 bg-green-600 text-white font-bold py-2 px-3 rounded-lg hover:bg-green-700 transition-all-ease">64px</button>
+                                     <button data-size="128" class="download-png-btn flex-1 bg-green-600 text-white font-bold py-2 px-3 rounded-lg hover:bg-green-700 transition-all-ease">128px</button>
+                                     <button data-size="256" class="download-png-btn flex-1 bg-green-600 text-white font-bold py-2 px-3 rounded-lg hover:bg-green-700 transition-all-ease">256px</button>
+                                </div>
+                             </div>
                         </div>
+                        <p id="icon-placeholder" class="text-center text-gray-500 p-8">Selecciona un ícono de la galería para empezar.</p>
                     </div>
                 </div>
             </div>
@@ -193,274 +167,68 @@
             &copy; 2025 Todos los derechos reservados para Hitster Ai
         </p>
     </footer>
-    
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-5 right-5 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 py-2 px-4 rounded-lg shadow-xl opacity-0 translate-y-10 transition-all duration-300">
-        Copiado al portapapeles!
-    </div>
 
     <script type="module">
-        // --- Navigation ---
+        // --- NAVIGATION ---
         const tabs = {
-            seo: { btn: document.getElementById('tab-seo'), section: document.getElementById('seo-section') },
-            repurpose: { btn: document.getElementById('tab-repurpose'), section: document.getElementById('repurpose-section') },
-            image: { btn: document.getElementById('tab-image'), section: document.getElementById('image-section') }
+            optimizer: { btn: document.getElementById('tab-optimizer'), section: document.getElementById('optimizer-section') },
+            iconCreator: { btn: document.getElementById('tab-icon-creator'), section: document.getElementById('icon-creator-section') }
         };
 
         function switchTab(activeKey) {
             Object.keys(tabs).forEach(key => {
-                const is_active = key === activeKey;
-                tabs[key].btn.classList.toggle('tab-active', is_active);
-                tabs[key].section.classList.toggle('hidden', !is_active);
+                const isActive = key === activeKey;
+                tabs[key].btn.classList.toggle('tab-active', isActive);
+                tabs[key].section.classList.toggle('hidden', !isActive);
             });
         }
-
-        tabs.seo.btn.addEventListener('click', () => switchTab('seo'));
-        tabs.repurpose.btn.addEventListener('click', () => switchTab('repurpose'));
-        tabs.image.btn.addEventListener('click', () => switchTab('image'));
         
-        // --- Toast Notification ---
-        const toast = document.getElementById('toast');
-        function showToast() {
-            toast.classList.remove('opacity-0', 'translate-y-10');
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'translate-y-10');
-            }, 2000);
-        }
-
-        // --- Copy to Clipboard ---
-        document.body.addEventListener('click', (event) => {
-            const copyBtn = event.target.closest('.copy-btn');
-            if (copyBtn) {
-                event.preventDefault();
-                const targetId = copyBtn.dataset.target;
-                const element = document.getElementById(targetId);
-                const textToCopy = element.value !== undefined ? element.value : element.innerText;
-
-                const textArea = document.createElement('textarea');
-                textArea.value = textToCopy;
-                document.body.appendChild(textArea);
-                textArea.select();
-                try {
-                    document.execCommand('copy');
-                    showToast();
-                } catch (err) {
-                    console.error('Fallback: Oops, unable to copy', err);
-                }
-                document.body.removeChild(textArea);
-            }
-        });
-
-        // --- Gemini API Call Function ---
-        async function callGemini(payload) {
-            const apiKey = ""; // API Key is handled by the environment
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                const result = await response.json();
-                if (result.candidates?.[0]?.content?.parts?.[0]) {
-                    return result.candidates[0].content.parts[0].text;
-                } else {
-                    console.error("API response structure is unexpected:", result);
-                    if(result.candidates?.[0]?.finishReason === 'SAFETY') {
-                       return JSON.stringify({ error: "No se pudo generar el contenido debido a políticas de seguridad. Intenta con un tema diferente." });
-                    }
-                    return JSON.stringify({ error: "No se recibió una respuesta válida de la IA." });
-                }
-            } catch (error) {
-                console.error("Error calling Gemini API:", error);
-                return JSON.stringify({ error: "Error al comunicarse con la IA. Revisa la consola para más detalles." });
-            }
-        }
-        
-        // --- SEO GENERATOR ---
-        const generateSeoBtn = document.getElementById('generate-seo-btn');
-        const generateAbBtn = document.getElementById('generate-ab-btn');
-        const topicInput = document.getElementById('topic');
-        const platformSelect = document.getElementById('platform');
-        const seoOutput = document.getElementById('seo-output');
-        const abTestOutput = document.getElementById('ab-test-output');
-        const seoLoader = document.getElementById('seo-loader');
-        const attractiveTitleDiv = document.getElementById('attractive-title');
-        const descriptionTextDiv = document.getElementById('description-text');
-        const hashtagsDiv = document.getElementById('hashtags');
-        const keywordsDiv = document.getElementById('keywords');
-
-        function validateTopic() {
-            if (!topicInput.value.trim()) {
-                alert("Por favor, describe el tema de tu publicación.");
-                return false;
-            }
-            return true;
-        }
-
-        function showLoader(loaderEl, show) {
-            loaderEl.classList.toggle('hidden', !show);
-            loaderEl.classList.toggle('flex', show);
-        }
-
-        generateSeoBtn.addEventListener('click', async () => {
-            if (!validateTopic()) return;
-            
-            seoOutput.classList.add('hidden');
-            abTestOutput.classList.add('hidden');
-            showLoader(seoLoader, true);
-
-            const prompt = `Actúa como un copywriter experto en marketing digital y SEO, especializado en crear contenido con un alto CTR (Click-Through Rate). Basado en el siguiente tema, genera contenido para la red social ${platformSelect.value}. Tema: "${topicInput.value}". Proporciona tu respuesta en formato JSON con las claves EXACTAS: "title", "description", "hashtags", "keywords". - "title": Un título corto, magnético y muy atractivo (máximo 15 palabras). - "description": Un texto de descripción persuasivo con emojis y una CTA potente. - "hashtags": Una cadena de texto con 10-15 hashtags relevantes. - "keywords": Una cadena de texto con 5-7 palabras clave para SEO, separadas por comas.`;
-            const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { responseMimeType: "application/json" } };
-            const resultText = await callGemini(payload);
-
-            try {
-                const resultJson = JSON.parse(resultText);
-                if (resultJson.error) {
-                    attractiveTitleDiv.innerText = resultJson.error;
-                    [descriptionTextDiv, hashtagsDiv, keywordsDiv].forEach(el => el.innerText = '');
-                } else {
-                    attractiveTitleDiv.innerText = resultJson.title || 'N/A';
-                    descriptionTextDiv.innerText = resultJson.description || 'N/A';
-                    hashtagsDiv.innerText = resultJson.hashtags || 'N/A';
-                    keywordsDiv.innerText = resultJson.keywords || 'N/A';
-                }
-            } catch (e) {
-                console.error("Failed to parse JSON response:", e);
-                attractiveTitleDiv.innerText = "Error: La respuesta de la IA no tenía el formato esperado.";
-                 [descriptionTextDiv, hashtagsDiv, keywordsDiv].forEach(el => el.innerText = '');
-            }
-
-            showLoader(seoLoader, false);
-            seoOutput.classList.remove('hidden');
-        });
-
-        generateAbBtn.addEventListener('click', async () => {
-            if (!validateTopic()) return;
-
-            seoOutput.classList.add('hidden');
-            abTestOutput.classList.add('hidden');
-            showLoader(seoLoader, true);
-
-            const prompt = `Actúa como un copywriter de clase mundial. Basado en el tema "${topicInput.value}", genera 3 variaciones de títulos magnéticos para una publicación en ${platformSelect.value}. El objetivo es una prueba A/B. Proporciona tu respuesta en formato JSON: un array de objetos, donde cada objeto tiene las claves "title" y "angle". - "title": El título sugerido (máximo 15 palabras). - "angle": Una explicación muy breve de la estrategia de copywriting.`;
-            const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { responseMimeType: "application/json" } };
-            const resultText = await callGemini(payload);
-            
-            abTestOutput.innerHTML = '<h3 class="font-semibold text-lg">Sugerencias de Títulos para Prueba A/B</h3>'; // Reset
-
-            try {
-                const results = JSON.parse(resultText);
-                if (results.error) {
-                    abTestOutput.innerHTML += `<p>${results.error}</p>`;
-                } else if (Array.isArray(results)) {
-                    results.forEach((item, index) => {
-                        const titleId = `ab-title-${index}`;
-                        const html = `<div class="output-card"><div class="flex justify-between items-center"><p id="${titleId}" class="font-bold text-indigo-600 dark:text-indigo-400">${item.title || 'N/A'}</p><button class="copy-btn text-xl" data-target="${titleId}">📋</button></div><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">${item.angle || 'Sin estrategia.'}</p></div>`;
-                        abTestOutput.innerHTML += html;
-                    });
-                }
-            } catch (e) {
-                console.error("Failed to parse A/B test JSON response:", e);
-                abTestOutput.innerHTML += "<p>Error: La respuesta de la IA no tenía el formato esperado.</p>";
-            }
-
-            showLoader(seoLoader, false);
-            abTestOutput.classList.remove('hidden');
-        });
-
-        // --- REPURPOSE CONTENT ---
-        const repurposeBtn = document.getElementById('repurpose-btn');
-        const longTextInput = document.getElementById('long-text');
-        const repurposeOutput = document.getElementById('repurpose-output');
-        const repurposeLoader = document.getElementById('repurpose-loader');
-
-        repurposeBtn.addEventListener('click', async () => {
-            if (!longTextInput.value.trim()) {
-                alert("Por favor, pega el contenido que deseas reutilizar.");
-                return;
-            }
-            
-            repurposeOutput.classList.add('hidden');
-            showLoader(repurposeLoader, true);
-
-            const prompt = `Eres un estratega de contenido experto en reutilizar contenido. He aquí un texto largo. Transfórmalo en una serie de publicaciones para redes sociales, optimizadas para X (Twitter), Instagram y LinkedIn. Devuelve un único objeto JSON con las claves "twitter_thread", "instagram_carousel", y "linkedin_post".\n\n- "twitter_thread": Un array de 3-5 strings, donde cada string es un tweet de un hilo.\n- "instagram_carousel": Un array de 5 objetos, cada uno con "slide_title" y "slide_content". El último slide debe tener un CTA.\n- "linkedin_post": Un string con un post profesional y perspicaz para LinkedIn, con hashtags profesionales.\n\nTexto Original:\n"""\n${longTextInput.value}\n"""`;
-            const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { responseMimeType: "application/json" } };
-            const resultText = await callGemini(payload);
-
-            repurposeOutput.innerHTML = ''; // Reset
-            try {
-                const resultJson = JSON.parse(resultText);
-                if (resultJson.error) {
-                     repurposeOutput.innerHTML = `<p>${resultJson.error}</p>`;
-                } else {
-                    // Twitter
-                    if (resultJson.twitter_thread) {
-                        let threadHtml = resultJson.twitter_thread.map((tweet, i) => `<p class="border-b border-gray-200 dark:border-gray-600 pb-2 mb-2">${i+1}. ${tweet}</p>`).join('');
-                        const threadId = 'repurpose-twitter';
-                        repurposeOutput.innerHTML += `<div class="output-card"><h4 class="font-bold text-lg mb-2 flex justify-between">Hilo de X/Twitter <button class="copy-btn" data-target="${threadId}">📋</button></h4><div id="${threadId}">${threadHtml}</div></div>`;
-                    }
-                    // Instagram
-                    if (resultJson.instagram_carousel) {
-                         let carouselHtml = resultJson.instagram_carousel.map((slide, i) => `<div class="border-b border-gray-200 dark:border-gray-600 pb-2 mb-2"><p class="font-semibold">${i+1}. ${slide.slide_title}</p><p>${slide.slide_content}</p></div>`).join('');
-                         const carouselId = 'repurpose-instagram';
-                         repurposeOutput.innerHTML += `<div class="output-card"><h4 class="font-bold text-lg mb-2 flex justify-between">Carrusel de Instagram <button class="copy-btn" data-target="${carouselId}">📋</button></h4><div id="${carouselId}">${carouselHtml}</div></div>`;
-                    }
-                     // LinkedIn
-                    if (resultJson.linkedin_post) {
-                        const linkedInId = 'repurpose-linkedin';
-                        repurposeOutput.innerHTML += `<div class="output-card"><h4 class="font-bold text-lg mb-2 flex justify-between">Publicación de LinkedIn <button class="copy-btn" data-target="${linkedInId}">📋</button></h4><p id="${linkedInId}" class="whitespace-pre-wrap">${resultJson.linkedin_post}</p></div>`;
-                    }
-                }
-            } catch (e) {
-                 console.error("Failed to parse Repurpose JSON response:", e);
-                 repurposeOutput.innerHTML += "<p>Error: La respuesta de la IA no tenía el formato esperado.</p>";
-            }
-
-            showLoader(repurposeLoader, false);
-            repurposeOutput.classList.remove('hidden');
-        });
+        tabs.optimizer.btn.addEventListener('click', () => switchTab('optimizer'));
+        tabs.iconCreator.btn.addEventListener('click', () => switchTab('iconCreator'));
 
         // --- IMAGE OPTIMIZER ---
         const imageUpload = document.getElementById('image-upload');
-        const imageLoader = document.getElementById('image-loader');
-        const imageOutput = document.getElementById('image-output');
+        const optimizerLoader = document.getElementById('optimizer-loader');
+        const optimizerOutput = document.getElementById('optimizer-output');
         const originalImage = document.getElementById('original-image');
         const originalSize = document.getElementById('original-size');
         const optimizedImage = document.getElementById('optimized-image');
         const optimizedSize = document.getElementById('optimized-size');
-        const altTextInput = document.getElementById('alt-text-input');
         const downloadBtn = document.getElementById('download-btn');
+        const altTextInput = document.getElementById('alt-text-input');
 
         imageUpload.addEventListener('change', async (event) => {
             const file = event.target.files[0];
-            if (!file) return;
-
-            imageOutput.classList.add('hidden');
-            showLoader(imageLoader, true);
-            
+            if (!file || !file.type.startsWith('image/')) {
+                optimizerOutput.classList.add('hidden');
+                return;
+            }
+            optimizerOutput.classList.add('hidden');
+            optimizerLoader.classList.remove('hidden');
             originalImage.src = URL.createObjectURL(file);
+            originalImage.style.display = 'block';
             originalSize.textContent = `Tamaño: ${(file.size / 1024).toFixed(2)} KB`;
-
-            const optimizedBlob = await optimizeImage(file);
-            optimizedImage.src = URL.createObjectURL(optimizedBlob);
-            downloadBtn.href = optimizedImage.src;
-            
-            const sizeReduction = 100 - (optimizedBlob.size / file.size) * 100;
-            optimizedSize.innerHTML = `Tamaño: ${(optimizedBlob.size / 1024).toFixed(2)} KB <span class="text-green-500">(${sizeReduction.toFixed(1)}% menos)</span>`;
-            
-            const base64Data = await fileToBase64(file);
-            const prompt = "Describe esta imagen de forma concisa para el atributo 'alt text' de una página web. Sé descriptivo pero breve.";
-            const payload = { contents: [{ role: "user", parts: [ { text: prompt }, { inlineData: { mimeType: file.type, data: base64Data } } ] }] };
-            const altText = await callGemini(payload);
-            altTextInput.value = altText.replace(/['"`]/g, '');
-
-            showLoader(imageLoader, false);
-            imageOutput.classList.remove('hidden');
-            imageOutput.classList.add('grid');
+            try {
+                const optimizedBlob = await optimizeImage(file);
+                optimizedImage.src = URL.createObjectURL(optimizedBlob);
+                optimizedImage.style.display = 'block';
+                downloadBtn.href = optimizedImage.src;
+                const sizeReduction = 100 - (optimizedBlob.size / file.size) * 100;
+                optimizedSize.innerHTML = `Tamaño: ${(optimizedBlob.size / 1024).toFixed(2)} KB <span class="text-green-500">(${sizeReduction.toFixed(1)}% menos)</span>`;
+                optimizerLoader.classList.add('hidden');
+                optimizerOutput.classList.remove('hidden');
+            } catch (error) {
+                console.error("Error al optimizar la imagen:", error);
+                alert("No se pudo optimizar la imagen. Por favor, intenta con otro archivo.");
+                optimizerLoader.classList.add('hidden');
+            }
+        });
+        
+        altTextInput.addEventListener('input', () => {
+            optimizedImage.alt = altTextInput.value;
         });
 
-        function optimizeImage(file, quality = 0.8) {
+        function optimizeImage(file, quality = 0.75) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.readAsDataURL(file);
@@ -471,26 +239,73 @@
                         const canvas = document.createElement('canvas');
                         canvas.width = img.width;
                         canvas.height = img.height;
-                        canvas.getContext('2d').drawImage(img, 0, 0);
-                        canvas.toBlob(blob => resolve(blob), 'image/webp', quality);
+                        const ctx = canvas.getContext('2d');
+                        if (ctx) {
+                            ctx.drawImage(img, 0, 0);
+                            canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error("La creación del Blob falló.")), 'image/webp', quality);
+                        } else {
+                            reject(new Error("No se pudo obtener el contexto 2D del canvas."));
+                        }
                     };
                     img.onerror = reject;
                 };
                 reader.onerror = reject;
             });
         }
+
+        // --- FAVICON GENERATOR ---
+        const faviconUpload = document.getElementById('favicon-upload');
+        const faviconOutput = document.getElementById('favicon-output');
+        const faviconHtmlCode = document.getElementById('favicon-html-code');
+
+        faviconUpload.addEventListener('change', async (event) => {
+            const file = event.target.files[0];
+            if (!file || !file.type.startsWith('image/')) {
+                faviconOutput.classList.add('hidden');
+                return;
+            }
+            
+            const image = new Image();
+            image.src = URL.createObjectURL(file);
+            await new Promise(resolve => image.onload = resolve);
+
+            const sizes = [
+                { size: 32, id: 'favicon-32' },
+                { size: 16, id: 'favicon-16' },
+                { size: 180, id: 'apple-touch-icon' },
+                { size: 192, id: 'android-chrome-192' }
+            ];
+
+            const previewContainer = faviconOutput.querySelector('.grid');
+            previewContainer.innerHTML = ''; // Clear previous results
+
+            for (const item of sizes) {
+                const canvas = document.createElement('canvas');
+                canvas.width = item.size;
+                canvas.height = item.size;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(image, 0, 0, item.size, item.size);
+                
+                const dataUrl = canvas.toDataURL('image/png');
+                
+                const previewHtml = `
+                    <div class="flex flex-col items-center gap-2">
+                        <img src="${dataUrl}" alt="Icono de ${item.size}x${item.size}" class="w-16 h-16 border rounded-md">
+                        <p class="text-xs font-mono">${item.size}x${item.size}</p>
+                        <a href="${dataUrl}" download="favicon-${item.size}x${item.size}.png" class="text-sm text-indigo-600 hover:underline">Descargar</a>
+                    </div>
+                `;
+                previewContainer.innerHTML += previewHtml;
+            }
+
+            faviconHtmlCode.textContent = 
+`<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">`;
+            
+            faviconOutput.classList.remove('hidden');
+        });
         
-        function fileToBase64(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => resolve(reader.result.split(',')[1]);
-                reader.onerror = reject;
-            });
-        }
-        
-        // Initialize with the first tab active
-        switchTab('seo');
-    </script>
-</body>
-</html>
+        // --- ICON LIBRARY ---
+        const iconGallery = document.getElementById('icon-gallery');
+        const iconCustomizer = document.getElementById('icon-customizer
