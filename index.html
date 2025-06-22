@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Herramientas de Imagen: Creador de Íconos y Optimizador WebP</title>
-    <meta name="description" content="Crea favicons para tu web a partir de tu logo, explora nuestra biblioteca de íconos SVG y optimiza tus imágenes convirtiéndolas al formato WebP. Herramientas de imagen todo en uno.">
-    <meta name="keywords" content="generador de favicon, creador de iconos, biblioteca de iconos, iconos svg, optimizador de imágenes, convertir a webp, comprimir imágenes, descargar iconos, herramienta web, hitster ai">
+    <meta name="description" content="Crea favicons (.ico, .png) y íconos para Windows/Mac a partir de tu logo. Explora nuestra biblioteca de íconos y optimiza tus imágenes convirtiéndolas al formato WebP.">
+    <meta name="keywords" content="generador de favicon, creador de iconos, .ico, .icns, .png, biblioteca de iconos, optimizador de imágenes, convertir a webp, comprimir imágenes, herramienta web, hitster ai">
     <meta name="author" content="Hitster Ai">
     
     <!-- ============== ETIQUETAS OPEN GRAPH (PARA REDES SOCIALES) ============== -->
@@ -100,7 +100,7 @@
         <main id="icon-creator-section" class="hidden space-y-6">
             <!-- Favicon Generator -->
             <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                <h2 class="text-2xl font-bold mb-4 text-center">Convierte tu Imagen en un Ícono Web (Favicon)</h2>
+                <h2 class="text-2xl font-bold mb-4 text-center">Convierte tu Imagen en Íconos</h2>
                 <div class="flex flex-col items-center gap-6">
                     <div class="w-full max-w-lg">
                         <label for="favicon-upload" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">1. Sube tu logo o imagen (se recomienda cuadrada):</label>
@@ -108,13 +108,19 @@
                     </div>
                     <div id="favicon-output" class="hidden w-full max-w-4xl space-y-6">
                         <div>
-                           <h3 class="font-semibold text-lg mb-2">2. Descarga tus Íconos</h3>
-                           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                               <!-- Favicon previews will be injected here -->
+                           <h3 class="font-semibold text-lg mb-2">2. Descarga tus Íconos para Web (Favicons)</h3>
+                           <div id="favicon-web-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                               <!-- Web Favicon previews will be injected here -->
                            </div>
                         </div>
                         <div>
-                            <h3 class="font-semibold text-lg mb-2">3. Copia este código en el &lt;head&gt; de tu web</h3>
+                           <h3 class="font-semibold text-lg mb-2">3. Descarga para Sistemas Operativos</h3>
+                            <div id="favicon-os-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                                <!-- OS Icon previews will be injected here -->
+                           </div>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">4. Copia este código en el &lt;head&gt; de tu web</h3>
                             <pre class="bg-gray-100 dark:bg-gray-900 text-sm p-4 rounded-lg overflow-x-auto"><code id="favicon-html-code"></code></pre>
                         </div>
                     </div>
@@ -123,7 +129,7 @@
 
             <!-- SVG Icon Library -->
             <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                <h2 class="text-2xl font-bold mb-4 text-center border-t pt-6 mt-6 border-gray-200 dark:border-gray-700">O Explora Nuestra Biblioteca de Íconos SVG</h2>
+                <h2 class="text-2xl font-bold mb-4 text-center border-t pt-6 mt-6 border-gray-200 dark:border-gray-700">O Explora Nuestra Biblioteca de Íconos</h2>
                  <div class="flex flex-col lg:flex-row items-start gap-8">
                     <!-- Icon Gallery -->
                     <div class="w-full lg:w-2/3">
@@ -144,13 +150,23 @@
                                 <input type="color" id="icon-color-picker" value="#4f46e5" class="mt-1 w-full h-10 rounded-md border-gray-300">
                             </div>
                              <div class="w-full space-y-2">
-                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Descargar como PNG:</label>
-                                <div class="flex justify-between gap-2">
-                                     <button data-size="64" class="download-png-btn flex-1 bg-green-600 text-white font-bold py-2 px-3 rounded-lg hover:bg-green-700 transition-all-ease">64px</button>
-                                     <button data-size="128" class="download-png-btn flex-1 bg-green-600 text-white font-bold py-2 px-3 rounded-lg hover:bg-green-700 transition-all-ease">128px</button>
-                                     <button data-size="256" class="download-png-btn flex-1 bg-green-600 text-white font-bold py-2 px-3 rounded-lg hover:bg-green-700 transition-all-ease">256px</button>
-                                </div>
+                                <label for="icon-format-select" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Formato:</label>
+                                <select id="icon-format-select" class="w-full rounded-md bg-gray-200 dark:bg-gray-700 border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                    <option value="png">PNG</option>
+                                    <option value="svg">SVG</option>
+                                </select>
                              </div>
+                             <div id="png-size-selector" class="w-full space-y-2">
+                                <label for="icon-size-select" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Tamaño (PNG):</label>
+                                <select id="icon-size-select" class="w-full rounded-md bg-gray-200 dark:bg-gray-700 border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                    <option value="64">64x64 px</option>
+                                    <option value="128" selected>128x128 px</option>
+                                    <option value="256">256x256 px</option>
+                                </select>
+                             </div>
+                             <button id="download-icon-btn" class="w-full bg-green-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 transition-all-ease">
+                                ⬇️ Descargar Ícono
+                             </button>
                         </div>
                         <p id="icon-placeholder" class="text-center text-gray-500 p-8">Selecciona un ícono de la galería para empezar.</p>
                     </div>
@@ -172,28 +188,21 @@
         // --- NAVIGATION ---
         const optimizerTabBtn = document.getElementById('tab-optimizer');
         const iconCreatorTabBtn = document.getElementById('tab-icon-creator');
-
         const optimizerSection = document.getElementById('optimizer-section');
         const iconCreatorSection = document.getElementById('icon-creator-section');
 
         optimizerTabBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            // Mostrar optimizador
             optimizerSection.classList.remove('hidden');
             optimizerTabBtn.classList.add('tab-active');
-
-            // Ocultar creador de iconos
             iconCreatorSection.classList.add('hidden');
             iconCreatorTabBtn.classList.remove('tab-active');
         });
 
         iconCreatorTabBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            // Mostrar creador de iconos
             iconCreatorSection.classList.remove('hidden');
             iconCreatorTabBtn.classList.add('tab-active');
-
-            // Ocultar optimizador
             optimizerSection.classList.add('hidden');
             optimizerTabBtn.classList.remove('tab-active');
         });
@@ -211,10 +220,8 @@
 
         imageUpload.addEventListener('change', async (event) => {
             const file = event.target.files[0];
-            if (!file || !file.type.startsWith('image/')) {
-                optimizerOutput.classList.add('hidden');
-                return;
-            }
+            if (!file || !file.type.startsWith('image/')) return;
+            
             optimizerOutput.classList.add('hidden');
             optimizerLoader.classList.remove('hidden');
             originalImage.src = URL.createObjectURL(file);
@@ -236,9 +243,7 @@
             }
         });
         
-        altTextInput.addEventListener('input', () => {
-            optimizedImage.alt = altTextInput.value;
-        });
+        altTextInput.addEventListener('input', () => { optimizedImage.alt = altTextInput.value; });
 
         function optimizeImage(file, quality = 0.75) {
             return new Promise((resolve, reject) => {
@@ -255,9 +260,7 @@
                         if (ctx) {
                             ctx.drawImage(img, 0, 0);
                             canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error("La creación del Blob falló.")), 'image/webp', quality);
-                        } else {
-                            reject(new Error("No se pudo obtener el contexto 2D del canvas."));
-                        }
+                        } else { reject(new Error("No se pudo obtener el contexto 2D del canvas.")); }
                     };
                     img.onerror = reject;
                 };
@@ -269,6 +272,8 @@
         const faviconUpload = document.getElementById('favicon-upload');
         const faviconOutput = document.getElementById('favicon-output');
         const faviconHtmlCode = document.getElementById('favicon-html-code');
+        const faviconWebGrid = document.getElementById('favicon-web-grid');
+        const faviconOsGrid = document.getElementById('favicon-os-grid');
 
         faviconUpload.addEventListener('change', async (event) => {
             const file = event.target.files[0];
@@ -281,17 +286,23 @@
             image.src = URL.createObjectURL(file);
             await new Promise(resolve => image.onload = resolve);
 
-            const sizes = [
-                { size: 32, id: 'favicon-32' },
-                { size: 16, id: 'favicon-16' },
-                { size: 180, id: 'apple-touch-icon' },
-                { size: 192, id: 'android-chrome-192' }
+            const webSizes = [
+                { size: 16, name: 'favicon-16x16.png' },
+                { size: 32, name: 'favicon-32x32.png' },
+                { size: 180, name: 'apple-touch-icon.png' },
+                { size: 192, name: 'android-chrome-192x192.png' }
             ];
 
-            const previewContainer = faviconOutput.querySelector('.grid');
-            previewContainer.innerHTML = ''; // Clear previous results
+            const osSizes = [
+                { size: 32, name: 'favicon.ico', type: 'ico' },
+                { size: 256, name: 'windows-icon.png', type: 'png', label: 'Windows (PNG)' },
+                { size: 512, name: 'mac-icon.png', type: 'png', label: 'macOS (PNG)' },
+            ];
 
-            for (const item of sizes) {
+            faviconWebGrid.innerHTML = '';
+            faviconOsGrid.innerHTML = '';
+
+            for (const item of [...webSizes, ...osSizes]) {
                 const canvas = document.createElement('canvas');
                 canvas.width = item.size;
                 canvas.height = item.size;
@@ -302,18 +313,23 @@
                 
                 const previewHtml = `
                     <div class="flex flex-col items-center gap-2">
-                        <img src="${dataUrl}" alt="Icono de ${item.size}x${item.size}" class="w-16 h-16 border rounded-md">
-                        <p class="text-xs font-mono">${item.size}x${item.size}</p>
-                        <a href="${dataUrl}" download="favicon-${item.size}x${item.size}.png" class="text-sm text-indigo-600 hover:underline">Descargar</a>
+                        <img src="${dataUrl}" alt="Icono de ${item.size}x${item.size}" class="w-16 h-16 border rounded-md p-1">
+                        <p class="text-xs font-mono">${item.label || `${item.size}x${item.size}`}</p>
+                        <a href="${dataUrl}" download="${item.name}" class="text-sm text-indigo-600 hover:underline">Descargar</a>
                     </div>
                 `;
-                previewContainer.innerHTML += previewHtml;
+                if (osSizes.includes(item)) {
+                    faviconOsGrid.innerHTML += previewHtml;
+                } else {
+                    faviconWebGrid.innerHTML += previewHtml;
+                }
             }
 
             faviconHtmlCode.textContent = 
 `<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">`;
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">`;
             
             faviconOutput.classList.remove('hidden');
         });
@@ -324,6 +340,10 @@
         const iconPlaceholder = document.getElementById('icon-placeholder');
         const iconPreview = document.getElementById('icon-preview');
         const colorPicker = document.getElementById('icon-color-picker');
+        const formatSelect = document.getElementById('icon-format-select');
+        const sizeSelector = document.getElementById('png-size-selector');
+        const sizeSelect = document.getElementById('icon-size-select');
+        const downloadIconButton = document.getElementById('download-icon-btn');
 
         let selectedIconData = null;
 
@@ -373,43 +393,55 @@
             const color = colorPicker.value;
             iconPreview.innerHTML = `<svg class="w-32 h-32" viewBox="0 0 24 24" fill="${color}"><path d="${selectedIconData.path}"/></svg>`;
         }
-
-        function downloadIconAsPng(size) {
+        
+        function handleIconDownload() {
             if (!selectedIconData) {
                 alert("Por favor, selecciona primero un ícono de la galería.");
                 return;
             }
 
+            const format = formatSelect.value;
             const color = colorPicker.value;
-            const svgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${color}" width="${size}" height="${size}"><path d="${selectedIconData.path}"/></svg>`;
-            const svgDataUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgString);
 
-            const img = new Image();
-            img.onload = () => {
-                const canvas = document.createElement('canvas');
-                canvas.width = size;
-                canvas.height = size;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0);
-                const pngDataUrl = canvas.toDataURL('image/png');
-                
+            if (format === 'svg') {
+                const svgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${color}" width="256px" height="256px"><path d="${selectedIconData.path}"/></svg>`;
+                const dataUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgString);
                 const link = document.createElement('a');
-                link.href = pngDataUrl;
-                link.download = `${selectedIconData.name}_${size}x${size}.png`;
+                link.href = dataUrl;
+                link.download = `${selectedIconData.name}_${color.slice(1)}.svg`;
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-            };
-            img.src = svgDataUrl;
+            } else { // PNG
+                const size = parseInt(sizeSelect.value, 10);
+                const svgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${color}" width="${size}" height="${size}"><path d="${selectedIconData.path}"/></svg>`;
+                const svgDataUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgString);
+
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = size;
+                    canvas.height = size;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+                    const pngDataUrl = canvas.toDataURL('image/png');
+                    
+                    const link = document.createElement('a');
+                    link.href = pngDataUrl;
+                    link.download = `${selectedIconData.name}_${size}x${size}.png`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                };
+                img.src = svgDataUrl;
+            }
         }
         
         colorPicker.addEventListener('input', updateIconPreview);
-        document.querySelectorAll('.download-png-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const size = parseInt(e.target.dataset.size, 10);
-                downloadIconAsPng(size);
-            });
+        formatSelect.addEventListener('change', () => {
+            sizeSelector.classList.toggle('hidden', formatSelect.value !== 'png');
         });
+        downloadIconButton.addEventListener('click', handleIconDownload);
 
         // Initial render
         renderIconGallery();
