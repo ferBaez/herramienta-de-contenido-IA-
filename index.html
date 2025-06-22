@@ -170,21 +170,33 @@
 
     <script type="module">
         // --- NAVIGATION ---
-        const tabs = {
-            optimizer: { btn: document.getElementById('tab-optimizer'), section: document.getElementById('optimizer-section') },
-            iconCreator: { btn: document.getElementById('tab-icon-creator'), section: document.getElementById('icon-creator-section') }
-        };
+        const optimizerTabBtn = document.getElementById('tab-optimizer');
+        const iconCreatorTabBtn = document.getElementById('tab-icon-creator');
 
-        function switchTab(activeKey) {
-            Object.keys(tabs).forEach(key => {
-                const isActive = key === activeKey;
-                tabs[key].btn.classList.toggle('tab-active', isActive);
-                tabs[key].section.classList.toggle('hidden', !isActive);
-            });
-        }
-        
-        tabs.optimizer.btn.addEventListener('click', () => switchTab('optimizer'));
-        tabs.iconCreator.btn.addEventListener('click', () => switchTab('iconCreator'));
+        const optimizerSection = document.getElementById('optimizer-section');
+        const iconCreatorSection = document.getElementById('icon-creator-section');
+
+        optimizerTabBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Mostrar optimizador
+            optimizerSection.classList.remove('hidden');
+            optimizerTabBtn.classList.add('tab-active');
+
+            // Ocultar creador de iconos
+            iconCreatorSection.classList.add('hidden');
+            iconCreatorTabBtn.classList.remove('tab-active');
+        });
+
+        iconCreatorTabBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Mostrar creador de iconos
+            iconCreatorSection.classList.remove('hidden');
+            iconCreatorTabBtn.classList.add('tab-active');
+
+            // Ocultar optimizador
+            optimizerSection.classList.add('hidden');
+            optimizerTabBtn.classList.remove('tab-active');
+        });
 
         // --- IMAGE OPTIMIZER ---
         const imageUpload = document.getElementById('image-upload');
@@ -308,4 +320,99 @@
         
         // --- ICON LIBRARY ---
         const iconGallery = document.getElementById('icon-gallery');
-        const iconCustomizer = document.getElementById('icon-customizer
+        const iconCustomizer = document.getElementById('icon-customizer');
+        const iconPlaceholder = document.getElementById('icon-placeholder');
+        const iconPreview = document.getElementById('icon-preview');
+        const colorPicker = document.getElementById('icon-color-picker');
+
+        let selectedIconData = null;
+
+        const iconDatabase = [
+            // Social Media Icons
+            { name: 'facebook', path: 'M14 13.5H16.5L17.5 9.5H14V7.5C14 6.47 14 5.5 16 5.5H17.5V2.14C17.174 2.097 16.142 2 15.12 2C13.02 2 11.5 3.26 11.5 5.78V9.5H8.5V13.5H11.5V22H14V13.5Z' },
+            { name: 'instagram', path: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z' },
+            { name: 'linkedin', path: 'M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z' },
+            { name: 'x-twitter', path: 'M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 7.184L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.404z' },
+            { name: 'tiktok', path: 'M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.01-1.58-.01-3.16 0-4.75l-.04 1.28c-1.38.52-2.83.89-4.28 1.14v4.39c-.94.19-1.86.46-2.79.66v-4.4c-2.58.1-5.1.84-7.22 2.25v-4.11c1.29-1.16 2.82-1.95 4.49-2.26v-4.27c1.39-.31 2.85-.42 4.25-.51z' },
+            { name: 'youtube', path: 'M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z' },
+            // General & Tech Icons
+            { name: 'web', path: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z' },
+            { name: 'ai-brain', path: 'M12 3C9.243 3 7 5.243 7 8c0 1.44.621 2.744 1.625 3.688C7.576 12.235 7 13.064 7 14c0 1.34.835 2.505 2.003 2.938C8.42 17.514 8 18.2 8 19c0 1.657 1.343 3 3 3s3-1.343 3-3c0-.8-.42-1.486-.997-2.062C16.165 16.505 17 15.34 17 14c0-.936-.576-1.765-1.625-2.312C16.379 10.744 17 9.44 17 8c0-2.757-2.243-5-5-5zm-3 5c0-1.657 1.343-3 3-3s3 1.343 3 3-1.343 3-3 3-3-1.343-3-3z' },
+            { name: 'database', path: 'M12 3c-4.42 0-8 1.79-8 4v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7c0-2.21-3.58-4-8-4zm0 2c3.31 0 6 1.34 6 3s-2.69 3-6 3-6-1.34-6-3 2.69-3 6-3zm0 14c-3.31 0-6-1.34-6-3v-1.6c1.38.93 3.55 1.6 6 1.6s4.62-.67 6-1.6V16c0 1.66-2.69 3-6 3zm0-5c-3.31 0-6-1.34-6-3v-1.6c1.38.93 3.55 1.6 6 1.6s4.62-.67 6-1.6V11c0 1.66-2.69 3-6 3z' },
+            { name: 'hard-drive', path: 'M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10 10-4.48 10-10zm-10 8c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-12h2v4h-2zm0 6h2v2h-2z' },
+            { name: 'cloud', path: 'M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z' },
+            { name: 'folder', path: 'M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z' },
+            { name: 'chart', path: 'M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z' },
+            { name: 'check', path: 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z' },
+        ];
+
+        function renderIconGallery() {
+            iconGallery.innerHTML = '';
+            iconDatabase.forEach(icon => {
+                const iconContainer = document.createElement('div');
+                iconContainer.className = 'icon-gallery-item';
+                iconContainer.dataset.iconName = icon.name;
+                iconContainer.innerHTML = `<svg class="w-full h-full" viewBox="0 0 24 24" fill="currentColor"><path d="${icon.path}"/></svg>`;
+                iconContainer.addEventListener('click', () => selectIcon(icon, iconContainer));
+                iconGallery.appendChild(iconContainer);
+            });
+        }
+        
+        function selectIcon(icon, containerElement) {
+            selectedIconData = icon;
+            document.querySelectorAll('.icon-gallery-item').forEach(el => el.classList.remove('selected'));
+            containerElement.classList.add('selected');
+            iconPlaceholder.classList.add('hidden');
+            iconCustomizer.classList.remove('hidden');
+            iconCustomizer.classList.add('flex');
+            updateIconPreview();
+        }
+        
+        function updateIconPreview() {
+            if (!selectedIconData) return;
+            const color = colorPicker.value;
+            iconPreview.innerHTML = `<svg class="w-32 h-32" viewBox="0 0 24 24" fill="${color}"><path d="${selectedIconData.path}"/></svg>`;
+        }
+
+        function downloadIconAsPng(size) {
+            if (!selectedIconData) {
+                alert("Por favor, selecciona primero un ícono de la galería.");
+                return;
+            }
+
+            const color = colorPicker.value;
+            const svgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${color}" width="${size}" height="${size}"><path d="${selectedIconData.path}"/></svg>`;
+            const svgDataUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgString);
+
+            const img = new Image();
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                const pngDataUrl = canvas.toDataURL('image/png');
+                
+                const link = document.createElement('a');
+                link.href = pngDataUrl;
+                link.download = `${selectedIconData.name}_${size}x${size}.png`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            };
+            img.src = svgDataUrl;
+        }
+        
+        colorPicker.addEventListener('input', updateIconPreview);
+        document.querySelectorAll('.download-png-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const size = parseInt(e.target.dataset.size, 10);
+                downloadIconAsPng(size);
+            });
+        });
+
+        // Initial render
+        renderIconGallery();
+    </script>
+</body>
+</html>
